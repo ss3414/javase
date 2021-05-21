@@ -91,7 +91,7 @@ public class LambdaTest {
             }
         }
         mapList.sort((map1, map2) -> (Integer) map1.get("sort") > (Integer) map2.get("sort") ? 0 : -1); /* 递增 */
-
+//        mapList.sort((map1, map2) -> ((String) map1.get("sort")).compareTo(((String) map2.get("sort"))) < 0 ? -1 : 0);
         System.out.println(mapList);
     }
 

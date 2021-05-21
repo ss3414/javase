@@ -86,6 +86,10 @@ public class HutoolTest {
         /* （FileUtil） */
         System.out.println(FileUtil.readString(new File("/home/fantasy/Desktop/test.txt"), "UTF-8"));
 
+        /* （FileReader） */
+//        FileReader fileReader = new FileReader("/home/fantasy/Desktop/test.txt");
+//        List<String> lineList = fileReader.readLines();
+
         /* （IdUtil）UUID */
 //        System.out.println(IdUtil.randomUUID());
 //        System.out.println(IdUtil.simpleUUID());

@@ -5,11 +5,13 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class C15_3 {
 
     /* File>FileInputStream>byte（读取字节） */
-    @Test
+//    @Test
     public void test() throws IOException {
         File file = new File("C:/Users/Administrator/Desktop/test.txt");
         FileInputStream fileInputStream = new FileInputStream(file);
@@ -64,10 +66,28 @@ public class C15_3 {
     }
 
     /* OutputStream>InputStream */
-    @Test
+//    @Test
     public void test5() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+    }
+
+    /* Zip */
+    @Test
+    public void test6() throws IOException {
+        File file = new File("C:/Users/Administrator/Desktop/test.txt");
+        File zipFile = new File("C:/Users/Administrator/Desktop/test.zip");
+        InputStream inputStream = new FileInputStream(file);
+        ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//        ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream);
+        zipOutputStream.putNextEntry(new ZipEntry(file.getName()));
+        int temp = 0;
+        while ((temp = inputStream.read()) != -1) {
+            zipOutputStream.write(temp);
+        }
+        inputStream.close();
+        zipOutputStream.close();
     }
 
 }

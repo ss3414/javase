@@ -11,8 +11,8 @@ import java.util.List;
 public class Archive {
 
     /* JSON转Cookie */
-    public static String JSON2Cookie(String input) {
-        JSONArray jsonArray = JSONArray.parseArray(input);
+    public static String JSON2Cookie(String JSONStr) {
+        JSONArray jsonArray = JSONArray.parseArray(JSONStr);
         StringBuffer cookie = new StringBuffer();
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);

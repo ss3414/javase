@@ -17,16 +17,17 @@ public class C07_8 {
         System.out.println(String.format("%s%s", "1", "2"));
     }
 
-    //    @Test
+    @Test
     public void math() {
         BigInteger bigInteger = new BigInteger("1234");
 //        System.out.println(bigInteger);
 
         BigDecimal bigDecimal = new BigDecimal("12.34");
         System.out.println(bigDecimal);
+        System.out.println(bigDecimal.compareTo(new BigDecimal("0")));
     }
 
-    @Test
+    //    @Test
     public void text() {
         System.out.println(new DecimalFormat("###,###0.00").format(0.11));
     }

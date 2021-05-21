@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 public class C16_3 {
 
@@ -105,14 +106,16 @@ public class C16_3 {
                 () -> "result3"
         );
         try {
-            executor.invokeAll(list).stream()
+            /* invokeAll是阻塞方法，会等待所有task运行完成 */
+            List<String> resultList = executor.invokeAll(list, 10, TimeUnit.SECONDS).stream()
                     .map(future -> {
                         try {
                             return future.get();
                         } catch (InterruptedException | ExecutionException e) {
                             throw new RuntimeException(e); /* 必须抛出RuntimeException */
                         }
-                    }).forEach(System.out::println);
+                    }).collect(Collectors.toList());
+            System.out.println(resultList);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

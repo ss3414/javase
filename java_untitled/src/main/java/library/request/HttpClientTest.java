@@ -55,7 +55,7 @@ public class HttpClientTest {
         String uri = "http://127.0.0.1/singleUpload";
         HttpPost post = new HttpPost(uri);
 
-        File file = new File("D:/新建文件夹（同步）/文档/Idea/idea使用教程2017-06-01.pdf");
+        File file = new File("D:/同步/文档/Idea/idea使用教程2017-06-01.pdf");
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE); /* 浏览器兼容模式 */
         builder.setCharset(CharsetUtils.get("UTF-8")); /* 解决中文文件名乱码 */

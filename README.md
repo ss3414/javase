@@ -120,9 +120,6 @@ c08（理解Stream）<br>
 c09（Stream API（上））<br>
 c10（Stream API（下））<br>
 
-## internal（深入理解Java8）
-C03（Java集合新加入的方法）<br>
-
 ## pattern（设计模式）
 ### c01（创建型）
 AbstractFactory（抽象工厂）<br>
