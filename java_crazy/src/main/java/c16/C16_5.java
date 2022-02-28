@@ -57,7 +57,7 @@ public class C16_5 {
     }
 
     /*
-     * fixme ReadWriteLock读写锁
+     * ReadWriteLock读写锁
      * 只要没有线程获取写锁，读取是并发的无需等待
      * */
     @Test

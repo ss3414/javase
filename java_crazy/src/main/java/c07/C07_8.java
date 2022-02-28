@@ -1,26 +1,63 @@
 package c07;
 
+import c06.User2;
 import javautil.common.Constant;
 import org.junit.jupiter.api.Test;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
+import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.sax.SAXSource;
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class C07_8 {
 
+    @Test
+    public void javax() {
+        try {
+            /* 对象转XML */
+            JAXBContext context = JAXBContext.newInstance(User2.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            User2 user = new User2(1, "name", "pwd");
+            marshaller.marshal(user, new FileOutputStream("C:/Users/Administrator/Desktop/test.xml"));
+
+            /* XML转对象（禁用DTD/<!DOCTYPE foo SYSTEM "file:/dev/tty">） */
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
+            String xml = new String(Files.readAllBytes(Paths.get("C:/Users/Administrator/Desktop/test.xml")), StandardCharsets.UTF_8);
+            InputSource inputSource = new InputSource(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
+            SAXSource source = new SAXSource(xmlReader, inputSource);
+            Unmarshaller unmarshaller = JAXBContext.newInstance(User2.class).createUnmarshaller();
+            User2 user2 = (User2) unmarshaller.unmarshal(source);
+            System.out.println(user2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //    @Test
     public void lang() {
         System.out.println(String.format("%s%s", "1", "2"));
     }
 
-    @Test
+    //    @Test
     public void math() {
         BigInteger bigInteger = new BigInteger("1234");
-//        System.out.println(bigInteger);
+        System.out.println(bigInteger);
 
         BigDecimal bigDecimal = new BigDecimal("12.34");
         System.out.println(bigDecimal);

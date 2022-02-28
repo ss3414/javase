@@ -100,7 +100,6 @@
             <groupId>util</groupId>
             <artifactId>java-util</artifactId>
             <version>1.0</version>
-            <!-- fixme LomBok导致打包失败 -->
             <!--<scope>system</scope>-->
             <!--<systemPath>${project.basedir}/src/main/resources/lib/java-util-1.0.jar</systemPath>-->
         </dependency>
@@ -123,13 +122,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.6.2</version>
         </dependency>
-
-        <!-- Kotlin自定义工具 -->
-        <!--<dependency>-->
-        <!--<groupId>util</groupId>-->
-        <!--<artifactId>kotlin-util</artifactId>-->
-        <!--<version>1.0</version>-->
-        <!--</dependency>-->
 
         <!-- 日志 -->
         <dependency>
@@ -217,20 +209,6 @@
             <version>5.9.0</version>
         </dependency>
 
-        <!-- 自动化测试 -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
-        </dependency>
-
-        <!-- OCR（tesseract-ocr Java版） -->
-        <dependency>
-            <groupId>net.sourceforge.tess4j</groupId>
-            <artifactId>tess4j</artifactId>
-            <version>4.4.0</version>
-        </dependency>
-
         <!-- 图片处理 -->
         <dependency>
             <groupId>net.coobird</groupId>
@@ -250,6 +228,13 @@
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>1.26</version>
+        </dependency>
+
+        <!-- ZIP -->
+        <dependency>
+            <groupId>org.zeroturnaround</groupId>
+            <artifactId>zt-zip</artifactId>
+            <version>1.14</version>
         </dependency>
 
     </dependencies>

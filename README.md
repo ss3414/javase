@@ -45,6 +45,7 @@ C07_3（常用：Object/Random）<br>
 C07_4（时间：JDK8/Calendar/Date/SimpleDateFormat）<br>
 C07_5（正则：Matcher/Pattern）<br>
 C07_8（未分类）<br>
+javax：JAXB<br>
 lang：String<br>
 math：BigDecimal/BigInteger<br>
 text：DecimalFormat<br>
@@ -242,7 +243,6 @@ email（oh-my-email）<br>
 freemarker（模板引擎）<br>
 jsoup（HTML解析）<br>
 log4j（日志）<br>
-tess4j（OCR）<br>
 thumbnailator（图片）<br>
 tinypinyin（拼音）<br>
 
@@ -266,6 +266,7 @@ poi（操作Office文档）<br>
 ## io（IO）
 okio（IO）<br>
 yaml（YAML）<br>
+ztzip（ZIP）<br>
 
 ## request（网络请求）
 httpclient<br>
@@ -274,10 +275,8 @@ okhttp<br>
 ## test（测试）
 junit4<br>
 junit5<br>
-selenium（自动化测试）<br>
 
 ## util（工具）
 guava（谷歌）<br>
 hutool（国产）<br>
 java-util（Java自定义）<br>
-kotlin-util（Kotlin自定义）<br>

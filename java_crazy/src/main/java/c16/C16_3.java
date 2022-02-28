@@ -124,7 +124,7 @@ public class C16_3 {
     /************************************************************分割线************************************************************/
 
     /*
-     * fixme ThreadPoolExecutor
+     * ThreadPoolExecutor
      * 推荐ThreadPoolExecutor而非Executors创建线程池
      * SingleThreadExecutor/FixedThreadPool允许请求的队列长度为Integer.MAX_VALUE，可能堆积大量请求
      * ScheduledThreadPool/CachedThreadPool可能创建大量线程

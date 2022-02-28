@@ -21,7 +21,7 @@ public class ConsumeExtension implements BeforeAllCallback, AfterEachCallback {
         extensionContext.getElement();
         for (Method method : clazz.getMethods()) {
             if (method.isAnnotationPresent(Consume.class)) {
-                Time time = new Time(); /* fixme 无法使用Lombok */
+                Time time = new Time();
                 time.setMethod(method.getName());
                 time.setBegin(LocalDateTime.now());
                 timeList.add(time);
