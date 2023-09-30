@@ -83,7 +83,7 @@ public class C07_8 {
     }
 
     public static void util2() {
-        List<String> input = new ArrayList();
+        List<String> input = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("请输入列表，换行后按Ctrl+D结束：");
