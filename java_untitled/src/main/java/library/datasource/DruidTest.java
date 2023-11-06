@@ -1,19 +1,19 @@
 package library.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
 public class DruidTest {
 
     @Test
-    public void test() throws IOException, SQLException {
+    @SneakyThrows
+    public void test() {
         Properties properties = new Properties();
         properties.load(DruidTest.class.getResourceAsStream("/application.properties"));
 

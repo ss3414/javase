@@ -1,10 +1,10 @@
 package library.datasource;
 
+import lombok.SneakyThrows;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.*;
-import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
@@ -14,14 +14,14 @@ import org.apache.lucene.store.RAMDirectory;
 import org.junit.jupiter.api.Test;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LuceneTest {
 
     @Test
-    public void test() throws IOException, ParseException {
+    @SneakyThrows
+    public void test() {
         /* 中文分词器 */
         IKAnalyzer analyzer = new IKAnalyzer();
 

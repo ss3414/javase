@@ -72,7 +72,7 @@ public class C16_2 {
 //            }
 //        }
 
-        /* fixme 倒数（多个类使用同一个CountDownLatch） */
+        /* 倒数计时（多个类使用同一个CountDownLatch） */
         CountDownLatch countDownLatch = new CountDownLatch(1);
         Test4 test4 = new Test4(new Test3(), countDownLatch);
         new Thread(test4).start();

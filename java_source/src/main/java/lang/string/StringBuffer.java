@@ -13,7 +13,7 @@ public class StringBuffer {
      * */
     @Test
     public void test() {
-        java.lang.StringBuffer stringBuffer = new java.lang.StringBuffer("");
+        java.lang.StringBuffer stringBuffer = new java.lang.StringBuffer();
     }
 
 }

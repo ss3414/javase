@@ -69,7 +69,7 @@ public class C05_2 {
         };
     }
 
-    /* fixme 函数式接口+Lambda异常 */
+    /* 函数式接口+Lambda异常 */
     @Test
     public void test4() {
         List<String> list = Collections.singletonList("Test");

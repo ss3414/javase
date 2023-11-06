@@ -1,9 +1,10 @@
 package library.util;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.core.util.XmlUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
 import cn.hutool.extra.template.Template;
@@ -12,9 +13,8 @@ import cn.hutool.extra.template.TemplateEngine;
 import cn.hutool.extra.template.TemplateUtil;
 import cn.hutool.http.HttpUtil;
 import library.bean.Parent;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 public class HutoolTest {
 
@@ -43,97 +43,94 @@ public class HutoolTest {
 
     /* hutool-core（核心） */
     @Test
+    @SneakyThrows
     public void core() {
-        try {
-            /* （Base64）Base64 */
-//            String str = "123456";
-//            System.out.println(Base64.decodeStr(Base64.encode(str)));
+        /* （Base64）Base64 */
+//        String str = "123456";
+//        System.out.println(Base64.decodeStr(Base64.encode(str)));
 
-            /* （BeanUtil）Map转对象 */
-//            Map<String, Object> map = new HashMap<>();
-//            map.put("id", 1);
-//            map.put("name", "name1");
-//            map.put("password", "pwd1");
-//            Parent parent = BeanUtil.fillBeanWithMapIgnoreCase(map, new Parent(), true);
-//            parent = BeanUtil.mapToBeanIgnoreCase(map, Parent.class, true); /* Bean需要有构造方法 */
-//            System.out.println(parent);
+        /* （BeanUtil）Map转对象 */
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("id", 1);
+//        map.put("name", "name1");
+//        map.put("password", "pwd1");
+//        Parent parent = BeanUtil.fillBeanWithMapIgnoreCase(map, new Parent(), true);
+//        parent = BeanUtil.mapToBeanIgnoreCase(map, Parent.class, true); /* Bean需要有构造方法 */
+//        System.out.println(parent);
 
-            /* （BeanUtil）对象转Map */
-//            Parent parent = Parent.builder().id(1).name("name").password("pwd").build();
-//            Map<String, Object> map = BeanUtil.beanToMap(parent, false, true);
-//            System.out.println(map);
+        /* （BeanUtil）对象转Map */
+//        Parent parent = Parent.builder().id(1).name("name").password("pwd").build();
+//        Map<String, Object> map = BeanUtil.beanToMap(parent, false, true);
+//        System.out.println(map);
 
-            /* （BeanUtil）对象转对象 */
-//            Parent parent1 = Parent.builder().id(1).build();
-//            Parent parent2 = Parent.builder().id(2).password("pwd2").build();
-//            BeanUtil.copyProperties(parent1, parent2, CopyOptions.create().setIgnoreNullValue(true)); /* 复制非null属性 */
-//            System.out.println(parent2);
+        /* （BeanUtil）对象转对象 */
+        Parent parent1 = Parent.builder().id(1).build();
+        Parent parent2 = Parent.builder().id(2).password("pwd2").build();
+        BeanUtil.copyProperties(parent1, parent2, CopyOptions.create().setIgnoreNullValue(true)); /* 复制非null属性 */
+        System.out.println(parent2);
 
-            /* （BeanUtil）fastjson转对象（fastjson本身就是Map） */
-//            com.alibaba.fastjson.JSONObject jsonObject = new com.alibaba.fastjson.JSONObject();
-//            jsonObject.put("id", 1);
-//            jsonObject.put("name", "name1");
-//            jsonObject.put("password", "pwd1");
-//            Parent parent = BeanUtil.fillBeanWithMapIgnoreCase(jsonObject, new Parent(), true);
-//            System.out.println(parent);
+        /* （BeanUtil）fastjson转对象（fastjson本身就是Map） */
+//        com.alibaba.fastjson.JSONObject jsonObject = new com.alibaba.fastjson.JSONObject();
+//        jsonObject.put("id", 1);
+//        jsonObject.put("name", "name1");
+//        jsonObject.put("password", "pwd1");
+//        Parent parent = BeanUtil.fillBeanWithMapIgnoreCase(jsonObject, new Parent(), true);
+//        System.out.println(parent);
 
-            /* （DateUtil） */
-//            String str = "2019-01-01 01:00:00";
-//            System.out.println(DateUtil.parse(str));
+        /* （DateUtil） */
+//        String str = "2019-01-01 01:00:00";
+//        System.out.println(DateUtil.parse(str));
 
-            /* （FileUtil） */
-//            System.out.println(FileUtil.readString(new File("/home/fantasy/Desktop/test.txt"), "UTF-8"));
+        /* （FileUtil） */
+//        System.out.println(FileUtil.readString(new File("C:/Users/Administrator/Desktop/test.txt"), "UTF-8"));
 
-            /* （FileReader） */
-//            FileReader fileReader = new FileReader("/home/fantasy/Desktop/test.txt");
-//            List<String> lineList = fileReader.readLines();
+        /* （FileReader） */
+//        FileReader fileReader = new FileReader("C:/Users/Administrator/Desktop/test.txt");
+//        List<String> lineList = fileReader.readLines();
 
-            /* （IdUtil）UUID */
-//            System.out.println(IdUtil.randomUUID());
-//            System.out.println(IdUtil.simpleUUID());
+        /* （IdUtil）UUID */
+//        System.out.println(IdUtil.randomUUID());
+//        System.out.println(IdUtil.simpleUUID());
 
-            /* （JSONUtil） */
-//            System.out.println(JSONUtil.toJsonStr(Arrays.asList(1, 2, 3)));
+        /* （JSONUtil） */
+//        System.out.println(JSONUtil.toJsonStr(Arrays.asList(1, 2, 3)));
 
-            /* （NetUtil） */
-//            String ip = "127.0.0.1";
-//            System.out.println(NetUtil.ipv4ToLong(ip)); /* ipv4转long */
-//            System.out.println(NetUtil.longToIpv4(NetUtil.ipv4ToLong(ip))); /* long转ipv4*/
+        /* （NetUtil） */
+//        String ip = "127.0.0.1";
+//        System.out.println(NetUtil.ipv4ToLong(ip)); /* ipv4转long */
+//        System.out.println(NetUtil.longToIpv4(NetUtil.ipv4ToLong(ip))); /* long转ipv4*/
 
-            /* （ObjectUtil）克隆（对象需实现Serializable接口） */
-//            Parent parent1 = Parent.builder().id(1).password("pwd1").build();
-//            Parent parent2 = ObjectUtil.clone(parent1);
-//            parent2.setId(2);
-//            System.out.println(parent1);
-//            System.out.println(parent2);
+        /* （ObjectUtil）克隆（对象需实现Serializable接口） */
+//        Parent parent1 = Parent.builder().id(1).password("pwd1").build();
+//        Parent parent2 = ObjectUtil.clone(parent1);
+//        parent2.setId(2);
+//        System.out.println(parent1);
+//        System.out.println(parent2);
 
-            /* （ReUtil） */
-//            String str = "123456@qq.com";
-//            System.out.println(ReUtil.isMatch("^([A-Za-z0-9]*)@([A-Za-z0-9]*)\\.([A-Za-z]*)$", str)); /* 邮箱校验 */
-//            System.out.println(ReUtil.replaceAll(str, "\\s", "")); /* 替换 */
-//            System.out.println(ReUtil.getGroup0("(\\d)", str));
+        /* （ReUtil） */
+//        String str = "123456@qq.com";
+//        System.out.println(ReUtil.isMatch("^([A-Za-z0-9]*)@([A-Za-z0-9]*)\\.([A-Za-z]*)$", str)); /* 邮箱校验 */
+//        System.out.println(ReUtil.replaceAll(str, "\\s", "")); /* 替换 */
+//        System.out.println(ReUtil.getGroup0("(\\d)", str));
 
-            /* （StrUtil） */
-//            String str1 = null;
-//            String str2 = " ";
-//            System.out.println(StrUtil.isEmpty(str1)); /* 只判断null和"" */
-//            System.out.println(StrUtil.isBlank(str2)); /* 不可见字符也算空（如空格） */
+        /* （StrUtil） */
+//        String str1 = null;
+//        String str2 = " ";
+//        System.out.println(StrUtil.isEmpty(str1)); /* 只判断null和"" */
+//        System.out.println(StrUtil.isBlank(str2)); /* 不可见字符也算空（如空格） */
 
-            /* （UnicodeUtil） */
-//            System.out.println(UnicodeUtil.toUnicode("中　文", false));
-//            System.out.println(UnicodeUtil.toString("\\u4e2d\\u3000\\u6587")); /* \u3000（全角空白符） */
-            /*
-             * ①将全角空白符（Unicode 12288）替换为空格
-             * ②Java中用\s+而非\s*匹配任意空白符
-             * */
-//            System.out.println("中文　中文".replace((char) 12288, ' ').replaceAll("\\s+", ""));
+        /* （UnicodeUtil） */
+//        System.out.println(UnicodeUtil.toUnicode("中　文", false));
+//        System.out.println(UnicodeUtil.toString("\\u4e2d\\u3000\\u6587")); /* \u3000（全角空白符） */
+        /*
+         * ①将全角空白符（Unicode 12288）替换为空格
+         * ②Java中用\s+而非\s*匹配任意空白符
+         * */
+//        System.out.println("中文　中文".replace((char) 12288, ' ').replaceAll("\\s+", ""));
 
-            /* （XmlUtil） */
-            Parent parent = Parent.builder().id(1).name("name").password("pwd").build();
-            XmlUtil.writeObjectAsXml(new File("C:/Users/Administrator/Desktop/test.xml"), parent);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        /* （XmlUtil） */
+//        Parent parent = Parent.builder().id(1).name("name").password("pwd").build();
+//        XmlUtil.writeObjectAsXml(new File("C:/Users/Administrator/Desktop/test.xml"), parent);
     }
 
     /* hutool-crypto（加密/解密） */

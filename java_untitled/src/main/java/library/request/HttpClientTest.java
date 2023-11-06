@@ -3,6 +3,7 @@ package library.request;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import javautil.common.Constant;
+import lombok.SneakyThrows;
 import org.apache.http.HeaderElement;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -37,7 +38,8 @@ import java.util.concurrent.Executors;
 public class HttpClientTest {
 
     //    @Test
-    public void test() throws IOException {
+    @SneakyThrows
+    public void test() {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpPost post = new HttpPost("http://httpbin.org/post");
         post.setHeader("User-Agent", Constant.USER_AGENT);
@@ -50,7 +52,8 @@ public class HttpClientTest {
 
     /* 文件上传 */
 //    @Test
-    public void test2() throws IOException {
+    @SneakyThrows
+    public void test2() {
         CloseableHttpClient client = HttpClients.createDefault();
         String uri = "http://127.0.0.1/singleUpload";
         HttpPost post = new HttpPost(uri);
@@ -83,7 +86,8 @@ public class HttpClientTest {
 
     /* 文件下载 */
     @Test
-    public void test3() throws IOException {
+    @SneakyThrows
+    public void test3() {
         CloseableHttpClient client = HttpClients.createDefault();
         String uri = "http://127.0.0.1/download";
         HttpGet get = new HttpGet(uri);
@@ -95,7 +99,7 @@ public class HttpClientTest {
         HttpEntity entity = response.getEntity();
         InputStream inputStream = entity.getContent();
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        Integer length = 0;
+        int length = 0;
         byte[] buffer = new byte[1024];
         while ((length = inputStream.read(buffer)) != -1) {
             byteArrayOutputStream.write(buffer, 0, length);
@@ -105,7 +109,8 @@ public class HttpClientTest {
 
     /* 发送JSON（application/json） */
 //    @Test
-    public void test4() throws IOException {
+    @SneakyThrows
+    public void test4() {
 //        HttpHost proxy = new HttpHost("127.0.0.1", 8888); /* 代理 */
 //        RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
 //        CloseableHttpClient client = HttpClients.custom().setDefaultRequestConfig(config).build();
@@ -131,7 +136,8 @@ public class HttpClientTest {
      * ②登录成功返回302重定向，JSESSIONID与userId两个Cookie
      * */
 //    @Test
-    public void test5() throws IOException {
+    @SneakyThrows
+    public void test5() {
         CookieStore cookieStore = new BasicCookieStore();
         CloseableHttpClient client = HttpClients.custom().setDefaultCookieStore(cookieStore).build();
         String baseURI = "http://127.0.0.1";
@@ -162,12 +168,13 @@ public class HttpClientTest {
 
     /* 带Cookie访问（设置Header/Cookie） */
 //    @Test
-    public void test6() throws IOException {
+    @SneakyThrows
+    public void test6() {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet get = new HttpGet("http://bbs.wuyou.net/forum.php?mod=guide&view=my");
         get.setHeader("User-Agent", Constant.USER_AGENT);
         JSONArray jsonArray = JSONArray.parseArray("");
-        StringBuffer cookie = new StringBuffer();
+        StringBuilder cookie = new StringBuilder();
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             cookie.append(jsonObject.getString("name"));
@@ -182,7 +189,8 @@ public class HttpClientTest {
 
     /* 多线程测速 */
 //    @Test
-    public void test7() throws InterruptedException {
+    @SneakyThrows
+    public void test7() {
         ExecutorService executor = Executors.newFixedThreadPool(10);
         List<Callable<String>> list = new ArrayList<>();
         for (int i = 0; i < 100; i++) {

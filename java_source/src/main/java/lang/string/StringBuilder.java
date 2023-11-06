@@ -12,7 +12,7 @@ public class StringBuilder {
      * */
     @Test
     public void test() {
-        java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder("");
+        java.lang.StringBuilder stringBuilder = new java.lang.StringBuilder();
     }
 
 }

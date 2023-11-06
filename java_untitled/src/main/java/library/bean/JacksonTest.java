@@ -2,9 +2,9 @@ package library.bean;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,8 @@ import java.util.List;
 public class JacksonTest {
 
     @Test
-    public void test() throws IOException {
+    @SneakyThrows
+    public void test() {
         List<Parent> list = Arrays.asList(
                 Parent.builder().id(1).name("name1").build(),
                 Parent.builder().id(2).name("name2").build());
@@ -28,7 +29,8 @@ public class JacksonTest {
     }
 
     //    @Test
-    public void test2() throws IOException {
+    @SneakyThrows
+    public void test2() {
         /* VO继承自实体类，根据Jackson注解决定序列化 */
         ParentVO parentVO = new ParentVO(1, "name", "pwd");
         ObjectMapper mapper = new ObjectMapper();

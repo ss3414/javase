@@ -1,18 +1,15 @@
 package library.request;
 
 import javautil.common.Constant;
+import lombok.SneakyThrows;
 import okhttp3.*;
 import org.junit.jupiter.api.Test;
 
 import javax.net.ssl.*;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +17,8 @@ public class OkhttpTest {
 
     /* get */
     @Test
-    public void test() throws IOException {
+    @SneakyThrows
+    public void test() {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("http://httpbin.org/get?name=name123")
@@ -31,7 +29,8 @@ public class OkhttpTest {
 
     /* post */
 //    @Test
-    public void test2() throws IOException {
+    @SneakyThrows
+    public void test2() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .proxy(new Proxy(Proxy.Type.SOCKS, new InetSocketAddress("127.0.0.1", 1080))) /* 代理 */
                 .build();
@@ -47,7 +46,8 @@ public class OkhttpTest {
 
     /* json */
 //    @Test
-    public void test3() throws IOException {
+    @SneakyThrows
+    public void test3() {
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .addInterceptor(chain -> {
                     /* fixme 重试次数 */
@@ -73,7 +73,8 @@ public class OkhttpTest {
 
     /* 文件下载 */
 //    @Test
-    public void test4() throws IOException {
+    @SneakyThrows
+    public void test4() {
         OkHttpClient client = new OkHttpClient.Builder().callTimeout(30, TimeUnit.SECONDS).build();
         HttpUrl url = new HttpUrl.Builder()
                 .scheme("http").host("127.0.0.1").port(8080)
@@ -90,11 +91,11 @@ public class OkhttpTest {
 
     private static class CustomTrustManager implements X509TrustManager {
         @Override
-        public void checkClientTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+        public void checkClientTrusted(X509Certificate[] x509Certificates, String s) {
         }
 
         @Override
-        public void checkServerTrusted(X509Certificate[] x509Certificates, String s) throws CertificateException {
+        public void checkServerTrusted(X509Certificate[] x509Certificates, String s) {
         }
 
         @Override
@@ -112,7 +113,8 @@ public class OkhttpTest {
 
     /* https（信任所有证书） */
 //    @Test
-    public void test5() throws IOException, NoSuchAlgorithmException, KeyManagementException {
+    @SneakyThrows
+    public void test5() {
         SSLContext context = SSLContext.getInstance("TLS");
         context.init(null, new TrustManager[]{new CustomTrustManager()}, new SecureRandom());
         SSLSocketFactory factory = context.getSocketFactory();

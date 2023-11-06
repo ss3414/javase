@@ -2,13 +2,13 @@ package com.biezhi.c09;
 
 import com.biezhi.common.dao.GithubDao;
 import com.biezhi.common.model.Github;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -41,7 +41,8 @@ public class C09 {
      * ①java.nio.file的Files/Paths
      * */
 //    @Test
-    public void test() throws IOException {
+    @SneakyThrows
+    public void test() {
         /* 值 */
         Stream<String> stream = Stream.of("1", "2", "3");
 

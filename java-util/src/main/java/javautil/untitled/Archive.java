@@ -13,7 +13,7 @@ public class Archive {
     /* JSON转Cookie */
     public static String JSON2Cookie(String JSONStr) {
         JSONArray jsonArray = JSONArray.parseArray(JSONStr);
-        StringBuffer cookie = new StringBuffer();
+        StringBuilder cookie = new StringBuilder();
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             cookie.append(String.format("%s%s%s%s", jsonObject.getString("name"), "=", jsonObject.getString("value"), ";"));

@@ -1,5 +1,6 @@
 package com.untitled;
 
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.lang.management.ManagementFactory;
@@ -73,7 +74,8 @@ public class Concurrent {
      * sleep被调用后，线程会自动苏醒
      * */
 //    @Test
-    public void test4() throws InterruptedException {
+    @SneakyThrows
+    public void test4() {
         Thread thread = new Thread();
         thread.start();
 //        thread.run();
@@ -128,7 +130,8 @@ public class Concurrent {
     private final String resource2 = "resource2";
 
     //    @Test
-    public void test6() throws InterruptedException {
+    @SneakyThrows
+    public void test6() {
         Thread thread1 = new Thread(() -> {
             synchronized (resource1) {
                 System.out.println(Thread.currentThread().getName() + ":get resource1");

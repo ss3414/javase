@@ -11,32 +11,32 @@ public class AnnotationExtension implements
         AfterAllCallback {
 
     @Override
-    public void beforeAll(ExtensionContext extensionContext) throws Exception {
+    public void beforeAll(ExtensionContext extensionContext) {
         System.out.println("beforeAll");
     }
 
     @Override
-    public void beforeEach(ExtensionContext extensionContext) throws Exception {
+    public void beforeEach(ExtensionContext extensionContext) {
         System.out.println("beforeEach");
     }
 
     @Override
-    public void beforeTestExecution(ExtensionContext extensionContext) throws Exception {
+    public void beforeTestExecution(ExtensionContext extensionContext) {
         System.out.println("beforeTestExecution");
     }
 
     @Override
-    public void afterTestExecution(ExtensionContext extensionContext) throws Exception {
+    public void afterTestExecution(ExtensionContext extensionContext) {
         System.out.println("afterTestExecution");
     }
 
     @Override
-    public void afterEach(ExtensionContext extensionContext) throws Exception {
+    public void afterEach(ExtensionContext extensionContext) {
         System.out.println("afterEach");
     }
 
     @Override
-    public void afterAll(ExtensionContext extensionContext) throws Exception {
+    public void afterAll(ExtensionContext extensionContext) {
         System.out.println("afterAll");
     }
 

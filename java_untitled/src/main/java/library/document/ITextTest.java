@@ -3,9 +3,9 @@ package library.document;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.SimpleBookmark;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -17,7 +17,8 @@ public class ITextTest {
 
     /* 获取PDF内容 */
 //    @Test
-    public void test() throws IOException {
+    @SneakyThrows
+    public void test() {
         PdfReader reader = new PdfReader("D:/新建文件夹（同步）/文档/Idea/idea使用教程2017-06-01.pdf");
         for (int i = 0; i < reader.getNumberOfPages(); i++) {
             System.out.println(PdfTextExtractor.getTextFromPage(reader, i + 1));
@@ -28,7 +29,8 @@ public class ITextTest {
 
     /* 获取PDF目录（bookmark） */
     @Test
-    public void test2() throws IOException {
+    @SneakyThrows
+    public void test2() {
         PdfReader reader = new PdfReader("D:/新建文件夹（同步）/文档/Idea/idea使用教程2017-06-01.pdf");
         List<HashMap<String, Object>> bookmarkList = SimpleBookmark.getBookmark(reader);
         recursive(bookmarkList, 1, "");

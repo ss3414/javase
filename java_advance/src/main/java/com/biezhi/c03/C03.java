@@ -85,7 +85,7 @@ public class C03 {
      * ②行为参数化
      * */
     @Test
-    public void main() {
+    public void test() {
         List<Github> testList = test(githubDao.findAll());
         List<Github> testList2 = test2(githubDao.findAll(), "Java");
         List<Github> testList3 = test3(githubDao.findAll(), "Java", 1000);

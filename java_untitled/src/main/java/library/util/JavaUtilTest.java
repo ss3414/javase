@@ -7,6 +7,7 @@ import javautil.sql.JDBC;
 import javautil.test.Consume;
 import javautil.test.ConsumeExtension;
 import javautil.untitled.Encode;
+import lombok.SneakyThrows;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.junit.jupiter.api.Test;
@@ -26,50 +27,47 @@ public class JavaUtilTest {
 
     //    @Test
     @Consume
+    @SneakyThrows
     public void elasticsearch() {
-        try {
-            REST util = new REST("http", "127.0.0.1", 9200);
-            String index = "untitled";
-            String table = "product";
+        REST util = new REST("http", "127.0.0.1", 9200);
+        String index = "untitled";
+        String table = "product";
 
-            /* 索引/映射 */
-            XContentBuilder builder = XContentFactory.jsonBuilder().startObject()
-//                    .startObject("product")
-//                    .startObject("properties")
-//                    .startObject("name").field("type", "text").field("analyzer", "")
-//                    .endObject().endObject().endObject()
-                    .endObject();
-            if (util.indexExist(index)) {
-                util.deleteIndex(index);
-                util.createIndex(index, table, builder);
-            } else {
-                util.createIndex(index, table, builder);
-            }
-
-//            /* 文档 */
-//            Map map = new HashMap();
-//            util.insertDocument(index, "product", map);
-//            util.updateDocument(index, "product", map, "name");
-//            util.deleteDocument(index, "product", "");
-
-//            GetResponse response = util.getDocument(index, "product", "");
-//            System.out.println(response.getSourceAsString());
-
-            /* 批量创建 */
-            JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/untitled?useSSL=false&characterEncoding=utf-8", "root", "2468");
-            List<Map<String, Object>> resultList = jdbc.select("SELECT * FROM `" + table + "`");
-            util.batchInsert(index, table, resultList);
-//            util.batchDelete(index, table, resultList);
-
-            /* 查询/聚合 */
-//            util.query(index, table, 1, 10); /* 精确/范围 */
-//            util.aggregation(index, table, 1, 10); /* 聚合 */
-
-//            /* 全文检索 */
-//            util.search(index, 1, 10, true);
-        } catch (Exception e) {
-            e.printStackTrace();
+        /* 索引/映射 */
+        XContentBuilder builder = XContentFactory.jsonBuilder().startObject()
+//                .startObject("product")
+//                .startObject("properties")
+//                .startObject("name").field("type", "text").field("analyzer", "")
+//                .endObject().endObject().endObject()
+                .endObject();
+        if (util.indexExist(index)) {
+            util.deleteIndex(index);
+            util.createIndex(index, table, builder);
+        } else {
+            util.createIndex(index, table, builder);
         }
+
+//        /* 文档 */
+//        Map map = new HashMap();
+//        util.insertDocument(index, "product", map);
+//        util.updateDocument(index, "product", map, "name");
+//        util.deleteDocument(index, "product", "");
+//
+//        GetResponse response = util.getDocument(index, "product", "");
+//        System.out.println(response.getSourceAsString());
+
+        /* 批量创建 */
+        JDBC jdbc = new JDBC("jdbc:mysql://127.0.0.1:3306/untitled?useSSL=false&characterEncoding=utf-8", "root", "2468");
+        List<Map<String, Object>> resultList = jdbc.select("SELECT * FROM `" + table + "`");
+        util.batchInsert(index, table, resultList);
+//        util.batchDelete(index, table, resultList);
+
+        /* 查询/聚合 */
+//        util.query(index, table, 1, 10); /* 精确/范围 */
+//        util.aggregation(index, table, 1, 10); /* 聚合 */
+
+        /* 全文检索 */
+//        util.search(index, 1, 10, true);
     }
 
     //    @Test
@@ -101,7 +99,8 @@ public class JavaUtilTest {
 
     //    @Test
 //    @Consume
-    public void test() throws InterruptedException {
+    @SneakyThrows
+    public void test() {
         Thread.sleep(1000);
     }
 

@@ -1,5 +1,6 @@
 package javautil.nosql;
 
+import lombok.SneakyThrows;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
@@ -65,13 +66,15 @@ public class REST {
     }
 
     /* 创建索引 */
-    public void createIndex(String index, String type, XContentBuilder builder) throws IOException {
+    @SneakyThrows
+    public void createIndex(String index, String type, XContentBuilder builder) {
         CreateIndexRequest request = new CreateIndexRequest(index).mapping(type, builder);
         client.indices().create(request, RequestOptions.DEFAULT);
     }
 
     /* 删除索引 */
-    public void deleteIndex(String index) throws IOException {
+    @SneakyThrows
+    public void deleteIndex(String index) {
         DeleteIndexRequest request = new DeleteIndexRequest(index);
         client.indices().delete(request, RequestOptions.DEFAULT);
     }
@@ -79,32 +82,37 @@ public class REST {
     /************************************************************分割线************************************************************/
 
     /* 插入文档 */
-    public void insertDocument(String index, String type, Map map) throws IOException {
+    @SneakyThrows
+    public void insertDocument(String index, String type, Map map) {
         IndexRequest request = new IndexRequest(index, type, String.valueOf(map.get("uuid"))).source(map); /* 用uuid作为id */
         client.index(request, RequestOptions.DEFAULT);
     }
 
     /* 修改文档 */
-    public void updateDocument(String index, String type, Map map, String field) throws IOException {
+    @SneakyThrows
+    public void updateDocument(String index, String type, Map map, String field) {
         UpdateRequest request = new UpdateRequest(index, type, String.valueOf(map.get("uuid"))).doc(field, map.get(field));
         client.update(request, RequestOptions.DEFAULT);
     }
 
     /* 获取文档 */
-    public GetResponse getDocument(String index, String type, String id) throws IOException {
+    @SneakyThrows
+    public GetResponse getDocument(String index, String type, String id) {
         GetRequest request = new GetRequest(index, type, id);
         GetResponse response = client.get(request, RequestOptions.DEFAULT);
         return response;
     }
 
     /* 删除文档 */
-    public void deleteDocument(String index, String type, String id) throws IOException {
+    @SneakyThrows
+    public void deleteDocument(String index, String type, String id) {
         DeleteRequest request = new DeleteRequest(index, type, id);
         client.delete(request, RequestOptions.DEFAULT);
     }
 
     /* 批量插入（uuid） */
-    public void batchInsert(String index, String type, List<Map<String, Object>> mapList) throws IOException {
+    @SneakyThrows
+    public void batchInsert(String index, String type, List<Map<String, Object>> mapList) {
         if (!indexExist(index)) {
             XContentBuilder builder = XContentFactory.jsonBuilder().startObject().endObject();
             createIndex(index, type, builder);
@@ -118,7 +126,8 @@ public class REST {
     }
 
     /* 批量删除 */
-    public void batchDelete(String index, String type, List<Map<String, Object>> mapList) throws IOException {
+    @SneakyThrows
+    public void batchDelete(String index, String type, List<Map<String, Object>> mapList) {
         BulkRequest request = new BulkRequest();
         mapList.forEach(e -> {
             DeleteRequest deleteRequest = new DeleteRequest(index, type, String.valueOf(e.get("uuid")));
@@ -130,7 +139,8 @@ public class REST {
     /************************************************************分割线************************************************************/
 
     /* 查询 */
-    public void query(String index, String type, Integer currentPage, Integer pageSize) throws IOException {
+    @SneakyThrows
+    public void query(String index, String type, Integer currentPage, Integer pageSize) {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         /* 分页 */
         searchSourceBuilder.from((currentPage - 1) * pageSize);
@@ -166,7 +176,8 @@ public class REST {
     }
 
     /* 聚合 */
-    public void aggregation(String index, String type, Integer currentPage, Integer pageSize) throws IOException {
+    @SneakyThrows
+    public void aggregation(String index, String type, Integer currentPage, Integer pageSize) {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.from((currentPage - 1) * pageSize);
         searchSourceBuilder.size(pageSize);
@@ -198,7 +209,8 @@ public class REST {
     }
 
     /* 全文检索 */
-    public void search(String index, Integer currentPage, Integer pageSize, Boolean highlight) throws IOException {
+    @SneakyThrows
+    public void search(String index, Integer currentPage, Integer pageSize, Boolean highlight) {
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         searchSourceBuilder.from((currentPage - 1) * pageSize);
         searchSourceBuilder.size(pageSize);
@@ -258,13 +270,10 @@ public class REST {
         }
     }
 
+    @SneakyThrows
     public static void main(String[] args) {
-        try {
-            REST util = new REST("http", "127.0.0.1", 9200);
-            util.search("untitled", 1, 10, true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        REST util = new REST("http", "127.0.0.1", 9200);
+        util.search("untitled", 1, 10, true);
     }
 
 }

@@ -2,6 +2,7 @@ package library.datasource;
 
 import io.minio.*;
 import javautil.common.Constant;
+import lombok.SneakyThrows;
 import okio.BufferedSource;
 import okio.Okio;
 import okio.Sink;
@@ -17,48 +18,39 @@ public class MinioTest {
 
     /* 上传 */
     @Test
+    @SneakyThrows
     public void test() {
-        try {
-            /* 创建存储桶 */
-            Boolean exist = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
-            if (!exist) {
-                minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
-            }
-            FileInputStream fileInputStream = new FileInputStream(new File("/home/fantasy/Desktop/test.zip"));
-            minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).object("test.zip").stream(fileInputStream, fileInputStream.available(), -1).build());
-        } catch (Exception e) {
-            e.printStackTrace();
+        /* 创建存储桶 */
+        boolean exist = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+        if (!exist) {
+            minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
         }
+        FileInputStream fileInputStream = new FileInputStream(new File("C:/Users/Administrator/Desktop/test.zip"));
+        minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).object("test.zip").stream(fileInputStream, fileInputStream.available(), -1).build());
     }
 
     /* 下载 */
 //    @Test
+    @SneakyThrows
     public void test2() {
-        try {
-            InputStream inputStream = minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object("test.zip").build());
-            try (BufferedSource bufferedSource = Okio.buffer(Okio.source(inputStream))) {
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                try (Sink sink = Okio.sink(byteArrayOutputStream)) {
-                    if (inputStream.available() == 0) {
-                        bufferedSource.readAll(sink);
-                    }
+        InputStream inputStream = minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object("test.zip").build());
+        try (BufferedSource bufferedSource = Okio.buffer(Okio.source(inputStream))) {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            try (Sink sink = Okio.sink(byteArrayOutputStream)) {
+                if (inputStream.available() == 0) {
+                    bufferedSource.readAll(sink);
                 }
-                OutputStream outputStream = new FileOutputStream(new File("/home/fantasy/Desktop/test2.zip"));
-                outputStream.write(byteArrayOutputStream.toByteArray());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            OutputStream outputStream = new FileOutputStream(new File("C:/Users/Administrator/Desktop/test2.zip"));
+            outputStream.write(byteArrayOutputStream.toByteArray());
         }
     }
 
     /* 删除 */
 //    @Test
+    @SneakyThrows
     public void test3() {
-        try {
-            minioClient.removeObject(RemoveObjectArgs.builder().bucket(bucketName).object("test.zip").build());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        minioClient.removeObject(RemoveObjectArgs.builder().bucket(bucketName).object("test.zip").build());
     }
 
 }

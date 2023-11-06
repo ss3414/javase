@@ -1,5 +1,7 @@
 package javautil.untitled;
 
+import lombok.SneakyThrows;
+
 import java.io.UnsupportedEncodingException;
 
 public class Encode {
@@ -19,14 +21,9 @@ public class Encode {
         return null;
     }
 
+    @SneakyThrows
     public static String convert2utf8(String input, String charset) {
-        String output = "";
-        try {
-            output = new String(input.getBytes(charset), charset);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return output;
+        return new String(input.getBytes(charset), charset);
     }
 
 }

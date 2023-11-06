@@ -1,5 +1,7 @@
 package javautil.untitled;
 
+import lombok.SneakyThrows;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,14 +14,16 @@ import java.util.UUID;
 public class Image {
 
     /* 格式转换（底层） */
-    public static void formatConvert(byte[] bytes, String format, String path) throws IOException {
+    @SneakyThrows
+    public static void formatConvert(byte[] bytes, String format, String path) {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
         BufferedImage bufferedImage = ImageIO.read(byteArrayInputStream);
         ImageIO.write(bufferedImage, format, new File(path));
     }
 
     /* 格式转换 */
-    public static void formatConvert(File input, String format) throws IOException {
+    @SneakyThrows
+    public static void formatConvert(File input, String format) {
         byte[] bytes = javautil.common.File.file2Bytes(input);
         Map<String, String> map = javautil.common.File.parse(input);
         String path = map.get("path");
@@ -31,8 +35,8 @@ public class Image {
 
     /* 文字水印（底层） */
     public static BufferedImage textWatermark(BufferedImage bufferedImage) {
-        Integer width = bufferedImage.getWidth();
-        Integer height = bufferedImage.getHeight();
+        int width = bufferedImage.getWidth();
+        int height = bufferedImage.getHeight();
 
         Graphics2D graphics2D = bufferedImage.createGraphics();
         graphics2D.setColor(Color.black); /* 颜色 */
@@ -45,7 +49,7 @@ public class Image {
 
     /* 文字水印 */
     public static boolean textWatermark(File input) {
-        Boolean flag = true;
+        boolean flag = true;
         try {
             BufferedImage bufferedImage = textWatermark(ImageIO.read(input));
             Map<String, String> map = javautil.common.File.parse(input);
@@ -72,9 +76,9 @@ public class Image {
         Graphics2D graphics2D = bufferedImage.createGraphics();
         graphics2D.drawImage(origin, 0, 0, originWidth, originHeight, null); /* 绘制原图 */
         /* 水印图左顶点的坐标（左上） */
-        Integer x = 0;
-        Integer y = 0;
-        Integer position = 10;
+        int x = 0;
+        int y = 0;
+        int position = 10;
         switch (position) {
             case 1:
                 /* 左上 */
@@ -125,8 +129,8 @@ public class Image {
                 /* 自定义（比率） */
                 x = (int) (originWidth * 0.1);
                 y = (int) (originHeight * 0.1);
-                Integer maxX = originWidth - watermarkWidth; /* x,y最大值（水印图完整显示在原图上） */
-                Integer maxY = originHeight - watermarkHeight;
+                int maxX = originWidth - watermarkWidth; /* x,y最大值（水印图完整显示在原图上） */
+                int maxY = originHeight - watermarkHeight;
                 if (x > maxX) {
                     x = maxX;
                 }
@@ -142,7 +146,7 @@ public class Image {
 
     /* 图片水印 */
     public static boolean imgWatermark(File originImg, File watermarkImg) {
-        Boolean flag = true;
+        boolean flag = true;
         try {
             BufferedImage bufferedImage = imgWatermark(ImageIO.read(originImg), ImageIO.read(watermarkImg));
             Map<String, String> map = javautil.common.File.parse(originImg);

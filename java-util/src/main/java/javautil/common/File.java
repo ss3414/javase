@@ -1,7 +1,8 @@
 package javautil.common;
 
+import lombok.SneakyThrows;
+
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -9,13 +10,13 @@ public class File {
 
     /* 解析文件，返回路径/文件名/后缀 */
     public static Map<String, String> parse(String file) {
-        Integer pathPosition = 0;
+        int pathPosition = 0;
         if (file.lastIndexOf("/") != -1) {
             pathPosition = file.lastIndexOf("/") + 1;
         } else if (file.lastIndexOf("\\") != -1) {
             pathPosition = file.lastIndexOf("\\") + 1;
         }
-        Integer suffixPosition = file.lastIndexOf(".");
+        int suffixPosition = file.lastIndexOf(".");
 
         Map<String, String> map = new LinkedHashMap<>();
         map.put("path", file.substring(0, pathPosition));
@@ -28,7 +29,8 @@ public class File {
         return parse(file.getAbsolutePath());
     }
 
-    public static byte[] file2Bytes(java.io.File file) throws IOException {
+    @SneakyThrows
+    public static byte[] file2Bytes(java.io.File file) {
         FileInputStream fileInputStream = new FileInputStream(file);
         int size = Math.toIntExact(file.length());
         byte[] bytes = new byte[size];

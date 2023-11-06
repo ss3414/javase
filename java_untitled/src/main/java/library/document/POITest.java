@@ -2,6 +2,7 @@ package library.document;
 
 import com.google.common.collect.ImmutableMap;
 import javautil.common.Constant;
+import lombok.SneakyThrows;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -12,14 +13,18 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.*;
 
 public class POITest {
 
     /* 读取xls */
 //    @Test
-    public void xlsRead() throws IOException {
+    @SneakyThrows
+    public void xlsRead() {
         FileInputStream fileInputStream = new FileInputStream("C:/Users/Administrator/Desktop/test.xls");
         HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = workbook.getSheet("Sheet1");
@@ -29,7 +34,8 @@ public class POITest {
 
     /* 创建xlsx */
     @Test
-    public void xlsxCreate() throws IOException {
+    @SneakyThrows
+    public void xlsxCreate() {
         File file = new File(Constant.getDesktop() + "test.xlsx");
         OutputStream outputStream = new FileOutputStream(file);
         XSSFWorkbook workbook = new XSSFWorkbook();
@@ -71,7 +77,8 @@ public class POITest {
 
     /* 读取xlsx */
 //    @Test
-    public void xlsxRead() throws IOException {
+    @SneakyThrows
+    public void xlsxRead() {
         FileInputStream fileInputStream = new FileInputStream("src/main/resources/module.xlsx");
         XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
         XSSFSheet sheet = workbook.getSheet("Sheet1");

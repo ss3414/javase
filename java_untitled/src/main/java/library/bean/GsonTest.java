@@ -13,7 +13,7 @@ public class GsonTest {
     public void test() {
         Gson gson = new Gson();
         Map map = new LinkedHashMap();
-        map.put("BigDecimal", new BigDecimal(0.123456789));
+        map.put("BigDecimal", new BigDecimal("0.123456789"));
         String JSONStr = gson.toJson(map);
 
         Map map2 = gson.fromJson(JSONStr, Map.class);

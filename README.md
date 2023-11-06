@@ -251,17 +251,11 @@ lombok<br>
 druid（数据库连接池）<br>
 lucene（全文检索）<br>
 minio（对象存储）<br>
-rabbitmq（RabbitMQ）<br>
 
 ## document（文档）
 easypoi（POI加强）<br>
 itext（PDF）<br>
 poi（操作Office文档）<br>
-
-## io（IO）
-okio（IO）<br>
-yaml（YAML）<br>
-ztzip（ZIP）<br>
 
 ## request（网络请求）
 httpclient<br>
