@@ -83,6 +83,7 @@ public class HutoolTest {
 
         /* （FileUtil） */
 //        System.out.println(FileUtil.readString(new File("C:/Users/Administrator/Desktop/test.txt"), "UTF-8"));
+//        System.out.println(FileUtil.writeString("content", new File("C:/Users/Administrator/Desktop/test.txt"), "UTF-8"));
 
         /* （FileReader） */
 //        FileReader fileReader = new FileReader("C:/Users/Administrator/Desktop/test.txt");

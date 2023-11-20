@@ -1,8 +1,11 @@
 package library.temp;
 
+import org.junit.jupiter.api.Test;
+
 public class TempTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
     }
 
 }

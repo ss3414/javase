@@ -19,7 +19,7 @@ public class ITextTest {
 //    @Test
     @SneakyThrows
     public void test() {
-        PdfReader reader = new PdfReader("D:/新建文件夹（同步）/文档/Idea/idea使用教程2017-06-01.pdf");
+        PdfReader reader = new PdfReader("同步/文档/Idea/idea使用教程2017-06-01.pdf");
         for (int i = 0; i < reader.getNumberOfPages(); i++) {
             System.out.println(PdfTextExtractor.getTextFromPage(reader, i + 1));
         }
@@ -31,7 +31,7 @@ public class ITextTest {
     @Test
     @SneakyThrows
     public void test2() {
-        PdfReader reader = new PdfReader("D:/新建文件夹（同步）/文档/Idea/idea使用教程2017-06-01.pdf");
+        PdfReader reader = new PdfReader("同步/文档/Idea/idea使用教程2017-06-01.pdf");
         List<HashMap<String, Object>> bookmarkList = SimpleBookmark.getBookmark(reader);
         recursive(bookmarkList, 1, "");
         for (HashMap<String, Object> out : outputList) {
