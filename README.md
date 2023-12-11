@@ -90,7 +90,6 @@ C16_2（线程的创建和启动：Callable/FutureTask/Runnable/Thread）<br>
 C16_3（线程池：Executor/Future/ThreadPoolExecutor）<br>
 C16_4（异步非阻塞：CompletableFuture）<br>
 C16_5（锁：ReadWriteLock/ReentrantLock/synchronized）<br>
-C16_6（AbstractQueuedSynchronizer）<br>
 C16_7（原子/并发集合）<br>
 
 ## c17（网络编程）
@@ -210,7 +209,6 @@ File（文件）<br>
 
 ## nosql（非关系型数据库）
 REST（ES）<br>
-Transport（ES）<br>
 
 ## security（安全）
 JWT<br>
@@ -229,20 +227,18 @@ Image（图片）<br>
 
 ******************************************************************************************
 
-# java_untitled
+# java_archive
 
 # library（第三方库）
 ## untitled（未分类）
 agent（Java代理）<br>
 email（oh-my-email）<br>
 freemarker（模板引擎）<br>
-jsoup（HTML解析）<br>
 log4j（日志）<br>
 thumbnailator（图片）<br>
 tinypinyin（拼音）<br>
 
 ## bean
-fastjson（JSON）<br>
 gson<br>
 jackson<br>
 lombok<br>

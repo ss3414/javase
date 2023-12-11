@@ -32,7 +32,6 @@ import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.elasticsearch.search.sort.ScoreSortBuilder;
 import org.elasticsearch.search.sort.SortOrder;
 
-import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,9 +47,7 @@ public class REST {
             builder.setConnectTimeout(60 * 1000).setSocketTimeout(60 * 1000);
             return builder;
         };
-        client = new RestHighLevelClient(
-                RestClient.builder(new HttpHost(host, port, scheme)).setRequestConfigCallback(callback)
-        );
+        client = new RestHighLevelClient(RestClient.builder(new HttpHost(host, port, scheme)).setRequestConfigCallback(callback));
     }
 
     /* 判断索引是否存在 */
@@ -164,7 +161,7 @@ public class REST {
         SearchRequest request = new SearchRequest(index);
         request.types(type);
         request.source(searchSourceBuilder);
-        System.out.println(searchSourceBuilder.toString()); /* ES Java转DSL */
+        System.out.println(searchSourceBuilder); /* ES Java转DSL */
         /* SearchResponse */
         SearchResponse response = client.search(request, RequestOptions.DEFAULT);
 
@@ -198,7 +195,7 @@ public class REST {
         SearchRequest request = new SearchRequest(index);
         request.types(type);
         request.source(searchSourceBuilder);
-        System.out.println(searchSourceBuilder.toString()); /* ES Java转DSL */
+        System.out.println(searchSourceBuilder); /* ES Java转DSL */
         SearchResponse response = client.search(request, RequestOptions.DEFAULT);
 
         /* 聚合结果 */
@@ -244,7 +241,7 @@ public class REST {
 
         SearchRequest request = new SearchRequest(index);
         request.source(searchSourceBuilder);
-        System.out.println(searchSourceBuilder.toString()); /* ES Java转DSL */
+        System.out.println(searchSourceBuilder); /* ES Java转DSL */
         SearchResponse response = client.search(request, RequestOptions.DEFAULT);
 
         SearchHits hits = response.getHits();

@@ -4,9 +4,9 @@
 
     <modules>
         <module>java_advance</module>
+        <module>java_archive</module>
         <module>java_crazy</module>
         <module>java_source</module>
-        <module>java_untitled</module>
         <module>java-agent</module>
         <module>java-util</module>
     </modules>

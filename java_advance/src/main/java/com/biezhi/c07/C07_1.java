@@ -31,7 +31,7 @@ public class C07_1 {
     }
 
     @Test
-    public void main() {
+    public void test() {
         /* 创建Optional */
         Optional<Github> github = Optional.empty();
         Optional<Github> github2 = Optional.of(new Github());

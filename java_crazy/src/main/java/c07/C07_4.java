@@ -21,7 +21,6 @@ public class C07_4 {
 //    @Test
     public void test() {
         LocalDate localDate = LocalDate.now();
-
         System.out.println(localDate.getYear());
         System.out.println(localDate.getMonth());
         System.out.println(localDate.getDayOfMonth());
@@ -31,7 +30,6 @@ public class C07_4 {
 //    @Test
     public void test2() {
         LocalTime localTime = LocalTime.now();
-
         System.out.println(localTime);
     }
 
@@ -39,7 +37,6 @@ public class C07_4 {
 //    @Test
     public void test3() {
         LocalDateTime localDateTime = LocalDateTime.now();
-
         System.out.println(localDateTime);
     }
 
@@ -47,7 +44,6 @@ public class C07_4 {
 //    @Test
     public void test4() {
         LocalDateTime localDateTime = LocalDateTime.now();
-
         System.out.println(localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
     }
 
@@ -55,7 +51,6 @@ public class C07_4 {
 //    @Test
     public void test5() {
         Clock clock = Clock.systemDefaultZone();
-
         System.out.println(clock.millis());
         System.out.println(java.sql.Date.from(clock.instant())); /* 新旧转换 */
     }
@@ -64,7 +59,6 @@ public class C07_4 {
 //    @Test
     public void test6() {
         Instant now = Instant.now();
-
         System.out.println(now);
         System.out.println(now.getEpochSecond());
         System.out.println(now.plusSeconds(3));
@@ -88,7 +82,6 @@ public class C07_4 {
         ZoneId zoneId = ZoneId.systemDefault();
         ZoneId zoneId2 = ZoneId.of("Asia/Shanghai");
         ZoneId zoneId3 = TimeZone.getDefault().toZoneId(); /* 新旧转换 */
-
         System.out.println(zoneId);
         System.out.println(zoneId2);
         System.out.println(zoneId3);
@@ -101,7 +94,6 @@ public class C07_4 {
         LocalDateTime localDateTime = LocalDateTime.now();
         ZoneId zoneId = ZoneId.of("Europe/Paris");
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, zoneId);
-
         System.out.println(zonedDateTime);
     }
 
@@ -117,7 +109,6 @@ public class C07_4 {
         System.out.println("时：" + calendar.get(Calendar.HOUR_OF_DAY));
         System.out.println("分：" + calendar.get(Calendar.MINUTE));
         System.out.println("秒：" + calendar.get(Calendar.SECOND));
-
         System.out.println("当前时间毫秒数：" + System.currentTimeMillis());
 
         Date date = new Date();
@@ -164,11 +155,8 @@ public class C07_4 {
     @Test
     public void test13() {
         String date = "2020-01-01";
-        try {
-            LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            date = localDate.atStartOfDay().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        } catch (DateTimeParseException e) {
-        }
+        LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        date = localDate.atStartOfDay().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         System.out.println(date);
     }
 

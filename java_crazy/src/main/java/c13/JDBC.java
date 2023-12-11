@@ -1,5 +1,7 @@
 package c13;
 
+import lombok.SneakyThrows;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,27 +15,24 @@ public class JDBC {
      * （-cp/-classpath 引入第三方依赖）
      * ②编译时只需要引入第三方依赖，运行时需要引入所有依赖（见JDBC.ps1）
      * */
+    @SneakyThrows
     public static void main(String[] args) {
         String url = "jdbc:mysql://127.0.0.1:3306/untitled?useSSL=false&characterEncoding=utf-8";
         String username = "root";
         String password = "2468";
 
-        try {
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver()); /* 需要引入MySQL Lib */
-            Connection connection = DriverManager.getConnection(url, username, password);
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM user");
-            while (resultSet.next()) {
-                System.out.println("id:" + resultSet.getObject("id"));
-                System.out.println("name:" + resultSet.getObject("name"));
-                System.out.println("pwd:" + resultSet.getObject("password"));
-            }
-            resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver()); /* 需要引入MySQL Lib */
+        Connection connection = DriverManager.getConnection(url, username, password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM user");
+        while (resultSet.next()) {
+            System.out.println("id:" + resultSet.getObject("id"));
+            System.out.println("name:" + resultSet.getObject("name"));
+            System.out.println("pwd:" + resultSet.getObject("password"));
         }
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 
 }

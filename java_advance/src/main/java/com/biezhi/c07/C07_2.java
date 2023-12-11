@@ -13,7 +13,7 @@ import java.util.Optional;
 public class C07_2 {
 
     @Test
-    public void main() {
+    public void test() {
         Github github = new Github();
         github.setId(1L);
         github.setGithub(Optional.of(new Github(2L)));

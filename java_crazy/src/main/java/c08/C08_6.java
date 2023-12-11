@@ -48,7 +48,7 @@ public class C08_6 {
         Map<String, Object> map = new LinkedHashMap<>(); /* 有序 */
         map.put("key1", "value1");
         map.put("key2", "value2");
-        System.out.println(map.toString());
+        System.out.println(map);
     }
 
     /*
@@ -99,7 +99,7 @@ public class C08_6 {
         Map map = new EnumMap(Github.class);
         map.put(Github.Java, "Java");
         map.put(Github.Python, "Python");
-        System.out.println(map.toString());
+        System.out.println(map);
     }
 
     @Test

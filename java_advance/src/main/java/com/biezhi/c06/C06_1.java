@@ -14,7 +14,7 @@ public class C06_1 {
 
     /* 从Java8开始，接口方法可以有方法体，可以有默认实现 */
     @Test
-    public void main() {
+    public void test() {
         /* 接口默认方法 */
         Calculator calculator = new CalculatorImpl();
         System.out.println(calculator.add(1, 1));

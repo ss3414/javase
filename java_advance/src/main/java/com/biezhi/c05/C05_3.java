@@ -52,7 +52,7 @@ public class C05_3 {
 
     /* 类型推断 */
     @Test
-    public void main() {
+    public void test() {
         List<String> resultList = test(githubDao.findAll());
 
         /* ①forEach()+Lambda取代for循环 */

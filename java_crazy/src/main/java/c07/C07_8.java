@@ -2,6 +2,7 @@ package c07;
 
 import c06.User2;
 import javautil.common.Constant;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -25,33 +26,30 @@ import java.util.stream.Collectors;
 public class C07_8 {
 
     @Test
+    @SneakyThrows
     public void javax() {
-        try {
-            /* 对象转XML */
-            JAXBContext context = JAXBContext.newInstance(User2.class);
-            Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            User2 user = new User2(1, "name", "pwd");
-            marshaller.marshal(user, new FileOutputStream("C:/Users/Administrator/Desktop/test.xml"));
+        /* 对象转XML */
+        JAXBContext context = JAXBContext.newInstance(User2.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        User2 user = new User2(1, "name", "pwd");
+        marshaller.marshal(user, new FileOutputStream("C:/Users/Administrator/Desktop/test.xml"));
 
-            /* XML转对象（禁用DTD/<!DOCTYPE foo SYSTEM "file:/dev/tty">） */
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
-            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
-            String xml = new String(Files.readAllBytes(Paths.get("C:/Users/Administrator/Desktop/test.xml")), StandardCharsets.UTF_8);
-            InputSource inputSource = new InputSource(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
-            SAXSource source = new SAXSource(xmlReader, inputSource);
-            Unmarshaller unmarshaller = JAXBContext.newInstance(User2.class).createUnmarshaller();
-            User2 user2 = (User2) unmarshaller.unmarshal(source);
-            System.out.println(user2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        /* XML转对象（禁用DTD/<!DOCTYPE foo SYSTEM "file:/dev/tty">） */
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+        XMLReader xmlReader = factory.newSAXParser().getXMLReader();
+        String xml = new String(Files.readAllBytes(Paths.get("C:/Users/Administrator/Desktop/test.xml")), StandardCharsets.UTF_8);
+        InputSource inputSource = new InputSource(new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
+        SAXSource source = new SAXSource(xmlReader, inputSource);
+        Unmarshaller unmarshaller = JAXBContext.newInstance(User2.class).createUnmarshaller();
+        User2 user2 = (User2) unmarshaller.unmarshal(source);
+        System.out.println(user2);
     }
 
     //    @Test
     public void lang() {
-        System.out.println(String.format("%s%s", "1", "2"));
+        System.out.printf("%s%s%n", "1", "2");
     }
 
     //    @Test
@@ -70,7 +68,8 @@ public class C07_8 {
     }
 
     //    @Test
-    public void util() throws IOException {
+    @SneakyThrows
+    public void util() {
         File file = new File("C:/Users/Administrator/Desktop/test.jpg");
         byte[] inputs = new byte[Math.toIntExact(file.length())];
         new FileInputStream(file).read(inputs);

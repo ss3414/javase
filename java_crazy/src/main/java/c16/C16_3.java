@@ -1,5 +1,6 @@
 package c16;
 
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -20,6 +21,7 @@ public class C16_3 {
 
     /* Executor+Callable */
 //    @Test
+    @SneakyThrows
     public void test2() {
         ExecutorService executor = Executors.newFixedThreadPool(1); /* 固定大小线程池 */
         Callable callable = () -> {
@@ -28,56 +30,43 @@ public class C16_3 {
         };
         Future<?> future = executor.submit(callable); /* execute无返回值/submit有返回值 */
 //        while (true) {
-//            try {
-//                if (future.isDone()) {
-//                    System.out.println("结束运行");
-//                    System.out.println(future.get());
-//                    break;
-//                }
-//                TimeUnit.SECONDS.sleep(1);
-//                System.out.println("正在运行");
-//            } catch (InterruptedException | ExecutionException e) {
-//                e.printStackTrace();
+//            if (future.isDone()) {
+//                System.out.println("结束运行");
+//                System.out.println(future.get());
+//                break;
 //            }
+//            TimeUnit.SECONDS.sleep(1);
+//            System.out.println("正在运行");
 //        }
 
         /* 等待Future结束运行 */
-        try {
-            System.out.println(future.get(3, TimeUnit.SECONDS));
-        } catch (InterruptedException | ExecutionException | TimeoutException e) {
-            e.printStackTrace();
-        }
+        System.out.println(future.get(3, TimeUnit.SECONDS));
     }
 
     /* 定时Future */
 //    @Test
+    @SneakyThrows
     public void test3() {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1); /* 定时/周期线程池 */
         Runnable runnable = () -> System.out.println(Thread.currentThread().getName());
         ScheduledFuture<?> future = executor.schedule(runnable, 1, TimeUnit.SECONDS); /* 延时1秒 */
-        try {
-            TimeUnit.SECONDS.sleep(3);
-            System.out.println(future.getDelay(TimeUnit.SECONDS)); /* 新线程延时1秒，主线程等待3秒，返回-2（2秒前执行） */
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        TimeUnit.SECONDS.sleep(3);
+        System.out.println(future.getDelay(TimeUnit.SECONDS)); /* 新线程延时1秒，主线程等待3秒，返回-2（2秒前执行） */
     }
 
     /* 周期Future */
 //    @Test
+    @SneakyThrows
     public void test4() {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable runnable = () -> System.out.println(Thread.currentThread().getName());
         executor.scheduleAtFixedRate(runnable, 0, 1, TimeUnit.SECONDS);
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        TimeUnit.SECONDS.sleep(3);
     }
 
     /* 时间叠加 */
 //    @Test
+    @SneakyThrows
     public void test5() {
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         Runnable runnable = () -> {
@@ -89,36 +78,29 @@ public class C16_3 {
             }
         };
         executor.scheduleWithFixedDelay(runnable, 0, 1, TimeUnit.SECONDS);
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        TimeUnit.SECONDS.sleep(5);
     }
 
     /* 批量运行 */
     @Test
+    @SneakyThrows
     public void test6() {
         ExecutorService executor = Executors.newWorkStealingPool();
         List<Callable<String>> list = Arrays.asList(
-                () -> "result1",
-                () -> "result2",
-                () -> "result3"
+            () -> "result1",
+            () -> "result2",
+            () -> "result3"
         );
-        try {
-            /* invokeAll是阻塞方法，会等待所有task运行完成 */
-            List<String> resultList = executor.invokeAll(list, 10, TimeUnit.SECONDS).stream()
-                    .map(future -> {
-                        try {
-                            return future.get();
-                        } catch (InterruptedException | ExecutionException e) {
-                            throw new RuntimeException(e); /* 必须抛出RuntimeException */
-                        }
-                    }).collect(Collectors.toList());
-            System.out.println(resultList);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        /* invokeAll是阻塞方法，会等待所有task运行完成 */
+        List<String> resultList = executor.invokeAll(list, 10, TimeUnit.SECONDS).stream()
+            .map(future -> {
+                try {
+                    return future.get();
+                } catch (InterruptedException | ExecutionException e) {
+                    throw new RuntimeException(e); /* 必须抛出RuntimeException */
+                }
+            }).collect(Collectors.toList());
+        System.out.println(resultList);
     }
 
     /************************************************************分割线************************************************************/
@@ -139,12 +121,12 @@ public class C16_3 {
          * DiscardOldestPolicy：丢弃最早未处理任务
          * */
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
-                1, /* 最小线程 */
-                10, /* 最大线程 */
-                1, /* 等待时间 */
-                TimeUnit.SECONDS, /* 单位 */
-                new ArrayBlockingQueue<>(10), /* 任务队列 */
-                new ThreadPoolExecutor.CallerRunsPolicy());
+            1, /* 最小线程 */
+            10, /* 最大线程 */
+            1, /* 等待时间 */
+            TimeUnit.SECONDS, /* 单位 */
+            new ArrayBlockingQueue<>(10), /* 任务队列 */
+            new ThreadPoolExecutor.CallerRunsPolicy());
         Runnable runnable = () -> {
             try {
                 TimeUnit.SECONDS.sleep(3);

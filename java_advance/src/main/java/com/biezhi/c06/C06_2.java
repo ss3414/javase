@@ -20,7 +20,7 @@ public class C06_2 {
      * ③显式选择默认方法
      * */
     @Test
-    public void main() {
+    public void test() {
         Interface1 interface1 = new Interface1Impl();
         interface1.test(); /* 实现类重写了接口默认方法 */
 

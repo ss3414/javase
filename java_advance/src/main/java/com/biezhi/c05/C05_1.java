@@ -36,7 +36,7 @@ public class C05_1 {
      * ②对象方法引用
      * */
     @Test
-    public void main() {
+    public void test() {
         List<Integer> list = Arrays.asList(2, 3, 5, 7, 11, 13, 17, 19);
         List<Integer> result = test(list, C05_1::test2); /* 静态方法引用 */
         System.out.println(result);
