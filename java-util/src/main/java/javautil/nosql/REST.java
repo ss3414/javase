@@ -253,13 +253,11 @@ public class REST {
                 Map<String, Object> tempMap = new LinkedHashMap<>(sourceMap);
                 Map<String, HighlightField> highlightMap = hit.getHighlightFields();
                 /* 高亮替换（高亮字段替换原有字段） */
-                highlightMap.forEach((highlightKey, highlightValue) -> {
-                    tempMap.forEach((sourceKey, sourceValue) -> {
-                        if (highlightKey.equals(sourceKey)) {
-                            sourceMap.put(sourceKey, highlightValue.getFragments()[0].string());
-                        }
-                    });
-                });
+                highlightMap.forEach((highlightKey, highlightValue) -> tempMap.forEach((sourceKey, sourceValue) -> {
+                    if (highlightKey.equals(sourceKey)) {
+                        sourceMap.put(sourceKey, highlightValue.getFragments()[0].string());
+                    }
+                }));
                 System.out.println(sourceMap);
             } else {
                 System.out.println(hit.getSourceAsString());

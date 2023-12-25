@@ -1,25 +1,11 @@
 package javautil.untitled;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Archive {
-
-    /* JSON转Cookie */
-    public static String JSON2Cookie(String JSONStr) {
-        JSONArray jsonArray = JSONArray.parseArray(JSONStr);
-        StringBuilder cookie = new StringBuilder();
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            cookie.append(String.format("%s%s%s%s", jsonObject.getString("name"), "=", jsonObject.getString("value"), ";"));
-        }
-        return cookie.toString();
-    }
 
     /* 获取年份 */
     public static List<String> getYears(Integer begin, Integer end) {

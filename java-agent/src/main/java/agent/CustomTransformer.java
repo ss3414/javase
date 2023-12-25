@@ -7,7 +7,7 @@ import java.security.ProtectionDomain;
 public class CustomTransformer implements ClassFileTransformer {
 
     @Override
-    public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
+    public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) {
         System.out.println("CustomTransformer:" + className);
         return classfileBuffer;
     }

@@ -12,9 +12,9 @@ import java.io.*;
 
 public class MinioDemo {
 
-    private static MinioClient minioClient = MinioClient.builder().endpoint("http://127.0.0.1:9000").credentials("01234567890123456789", "0123456789012345678901234567890123456789").build();
+    private static final MinioClient minioClient = MinioClient.builder().endpoint("http://127.0.0.1:9000").credentials("01234567890123456789", "0123456789012345678901234567890123456789").build();
 
-    private static String bucketName = Constant.getDate();
+    private static final String bucketName = Constant.getDate();
 
     /* 上传 */
     @Test
@@ -25,7 +25,7 @@ public class MinioDemo {
         if (!exist) {
             minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
         }
-        FileInputStream fileInputStream = new FileInputStream(new File("C:/Users/Administrator/Desktop/test.zip"));
+        FileInputStream fileInputStream = new FileInputStream("C:/Users/Administrator/Desktop/test.zip");
         minioClient.putObject(PutObjectArgs.builder().bucket(bucketName).object("test.zip").stream(fileInputStream, fileInputStream.available(), -1).build());
     }
 
@@ -41,7 +41,7 @@ public class MinioDemo {
                     bufferedSource.readAll(sink);
                 }
             }
-            OutputStream outputStream = new FileOutputStream(new File("C:/Users/Administrator/Desktop/test2.zip"));
+            OutputStream outputStream = new FileOutputStream("C:/Users/Administrator/Desktop/test2.zip");
             outputStream.write(byteArrayOutputStream.toByteArray());
         }
     }

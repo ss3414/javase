@@ -10,7 +10,7 @@ public class CustomClassLoader extends ClassLoader {
 
     /*重写ClassLoader的findClass()  */
     @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
+    protected Class<?> findClass(String name) {
         String name2 = name.replace(".", "/");
         String javaFile = name2 + ".java";
         compile(javaFile); /* 编译 */

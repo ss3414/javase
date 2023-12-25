@@ -25,7 +25,7 @@ public class C14_1 {
     @Test
     public void test() {
         C14_1 c14_1 = new C14_1();
-        System.out.println(c14_1.toString());
+        System.out.println(c14_1);
     }
 
 }

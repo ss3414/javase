@@ -2,7 +2,7 @@ package c18.proxy;
 
 public class LogProxy implements Log {
 
-    private LogImpl logImpl;
+    private final LogImpl logImpl;
 
     public LogProxy(LogImpl logImpl) {
         this.logImpl = logImpl;

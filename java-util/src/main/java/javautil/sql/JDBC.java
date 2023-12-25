@@ -13,7 +13,7 @@ public class JDBC {
     /* 初始化（传参） */
     @SneakyThrows
     public JDBC(String url, String username, String password) {
-        /* 加载MySQL8/5的驱动 */
+        /* 加载MySQL8的驱动 */
         Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection(url, username, password);
     }

@@ -25,7 +25,7 @@ public class ITextDemo {
         }
     }
 
-    private List<HashMap<String, Object>> outputList = new ArrayList<>();
+    private final List<HashMap<String, Object>> outputList = new ArrayList<>();
 
     /* 获取PDF目录（bookmark） */
     @Test

@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.10</version>
+            <version>1.2.20</version>
         </dependency>
 
         <!-- POI加强 -->
@@ -106,7 +106,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.6.2</version>
+            <version>5.10.1</version>
         </dependency>
 
         <!-- 日志 -->

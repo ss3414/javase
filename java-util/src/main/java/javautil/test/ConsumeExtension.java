@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ConsumeExtension implements BeforeAllCallback, AfterEachCallback {
 
-    private List<Time> timeList = new ArrayList<>();
+    private final List<Time> timeList = new ArrayList<>();
 
     @Override
     public void beforeAll(ExtensionContext extensionContext) {

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 public class Singleton {
 
-    private static Singleton singleton = new Singleton();
+    private static final Singleton singleton = new Singleton();
 
     /* 构造器私有，禁止使用new创建实例 */
 //    private Singleton() {

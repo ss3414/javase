@@ -1,9 +1,7 @@
 package c15;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -18,10 +16,7 @@ public class C15_8 {
      * */
     @Test
     public void test() throws IOException, ClassNotFoundException {
-        Github github = Github.builder()
-                .id(1L)
-                .title("title1")
-                .build();
+        Github github = Github.builder().id(1L).title("title1").build();
 
         FileOutputStream fileOutputStream = new FileOutputStream("C:/Users/Administrator/Desktop/test");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -38,8 +33,6 @@ public class C15_8 {
 
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 class Github implements Serializable {
 
     private static final long serialVersionUID = 1L; /* 标记序列化版本 */

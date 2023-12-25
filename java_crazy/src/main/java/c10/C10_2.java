@@ -36,7 +36,6 @@ public class C10_2 {
         File file = new File("");
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
             fileInputStream.read();
-            fileInputStream.close(); /* FileInputStream或其父类需要实现Closeable接口，重写close方法 */
         } catch (Exception e) {
             e.printStackTrace();
         }

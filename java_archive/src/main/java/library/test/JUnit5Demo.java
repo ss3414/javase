@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public class JUnit5Demo {
 
     @BeforeAll
-    public void test1() {
+    public static void test1() {
         System.out.println("test1");
     }
 

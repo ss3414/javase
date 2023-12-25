@@ -108,17 +108,6 @@ C18_6（反射和泛型）<br>
 # java_advance
 SpringBoot+JPA<br>
 
-## biezhi（跟上Java8）
-c02（Java的发展）<br>
-c03（理解Lambda）<br>
-c04（初尝Lambda）<br>
-c05（Lambda进阶）<br>
-c06（默认方法）<br>
-c07（Optional）<br>
-c08（理解Stream）<br>
-c09（Stream API（上））<br>
-c10（Stream API（下））<br>
-
 ## pattern（设计模式）
 ### c01（创建型）
 AbstractFactory（抽象工厂）<br>
