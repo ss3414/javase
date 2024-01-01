@@ -86,7 +86,6 @@ C15_3（字节流和字符流：InputStream/Reader/OutputStream/Writer）<br>
 C15_8（对象序列化：Serializable）<br>
 
 ## c16（多线程）
-C16_2（线程的创建和启动：Callable/FutureTask/Runnable/Thread）<br>
 C16_3（线程池：Executor/Future/ThreadPoolExecutor）<br>
 C16_4（异步非阻塞：CompletableFuture）<br>
 C16_5（锁：ReadWriteLock/ReentrantLock/synchronized）<br>
@@ -227,13 +226,7 @@ log4j（日志）<br>
 thumbnailator（图片）<br>
 tinypinyin（拼音）<br>
 
-## bean
-gson<br>
-jackson<br>
-lombok<br>
-
 ## datasource（数据源）
-druid（数据库连接池）<br>
 lucene（全文检索）<br>
 minio（对象存储）<br>
 
@@ -241,10 +234,6 @@ minio（对象存储）<br>
 easypoi（POI加强）<br>
 itext（PDF）<br>
 poi（操作Office文档）<br>
-
-## request（网络请求）
-httpclient<br>
-okhttp<br>
 
 ## test（测试）
 junit4<br>

@@ -4,8 +4,5 @@
 /**/.gradle/
 /**/build/
 
-# 项目
-/java_archive/src/main/java/library/temp/
-
 # 文件
 *.iml
