@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/mvc
+      http://www.springframework.org/schema/mvc/spring-mvc.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 包扫描（必需） -->
+    <context:component-scan base-package="*.controller"/>
+
+    <!--************************************************************分割线************************************************************-->
+
+    <!-- mvc开启注解（开启静态资源必需） -->
+    <mvc:annotation-driven>
+        <!-- 类型转换（spring-mvc-3.0.xsd报错） -->
+        <mvc:message-converters>
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json</value>
+                        <value>application/xml</value>
+                        <value>text/html</value>
+                        <value>text/plain</value>
+                        <value>text/xml</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- （旧）类型转换，不能和mvc:annotation-driven共存 -->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
+    <!--<property name="messageConverters">-->
+    <!--<list>-->
+    <!--<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">-->
+    <!--<property name="supportedMediaTypes">-->
+    <!--<list>-->
+    <!--<value>application/json</value>-->
+    <!--<value>application/xml</value>-->
+    <!--<value>text/html</value>-->
+    <!--<value>text/plain</value>-->
+    <!--<value>text/xml</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!--************************************************************半分割线******************************-->
+
+    <!-- 自定义拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/"/>
+            <bean class="com.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- （旧）自定义拦截器（必须注释<mvc:annotation-driven/>+必须配置AnnotationMethodHandlerAdapter） -->
+    <!--<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">-->
+    <!--<property name="interceptors">-->
+    <!--<list>-->
+    <!--<bean id="myInterceptor" class="com.interceptor.MyInterceptor"/>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!--************************************************************半分割线******************************-->
+
+    <!-- 静态资源 -->
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/style/**" location="/style/"/>
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/multiUpload/**" location="/multiUpload/"/>
+
+    <!--************************************************************分割线************************************************************-->
+
+    <!-- JSP视图解析器 -->
+    <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="contentType" value="text/html"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--************************************************************半分割线******************************-->
+
+    <!-- 文件上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 文件大小限制，单位Byte，如果不写默认为0（不限制） -->
+        <!--<property name="maxUploadSize" value=""/>-->
+    </bean>
+
+    <!-- 500错误 -->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/WEB-INF/error/500.jsp</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--************************************************************分割线************************************************************-->
+
+    <!-- AspectJ -->
+    <aop:aspectj-autoproxy/>
+
+</beans>

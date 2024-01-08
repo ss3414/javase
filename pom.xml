@@ -3,12 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modules>
+        <module>dayass_ssm</module>
         <module>java_advance</module>
-        <module>java_archive</module>
         <module>java_crazy</module>
-        <module>java_source</module>
-        <module>java-agent</module>
-        <module>java-util</module>
+        <module>javaee5</module>
+        <module>ssm</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>

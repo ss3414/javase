@@ -1,9 +1,7 @@
 package c18;
 
 import org.junit.jupiter.api.Test;
-import sun.misc.Launcher;
 
-import java.net.URL;
 import java.util.Map;
 
 public class C18_2 {
@@ -22,15 +20,6 @@ public class C18_2 {
          * */
 //        Object object = new Object();
 //        System.out.println(object); /* java.lang.Object@xxx（@xxx为类加载器） */
-
-        /*
-         * Bootstrap ClassLoader（根类加载器）
-         * ①负责加载Java的核心类
-         * */
-        URL[] urls = Launcher.getBootstrapClassPath().getURLs();
-        for (URL url : urls) {
-            System.out.println(url); /* C:/Program Files/Java/jdk1.8.0_161/jre/lib下的jar包 */
-        }
     }
 
     /* 类加载器层级：Extension ClassLoader>System ClassLoader>Bootstrap ClassLoader */

@@ -39,7 +39,7 @@ public class Concurrent {
          * main
          * */
         for (ThreadInfo threadInfo : threadInfos) {
-            System.out.println(threadInfo.getThreadId() + "：" + threadInfo.getThreadName());
+            System.out.println(threadInfo.getThreadId() + ":" + threadInfo.getThreadName());
         }
     }
 

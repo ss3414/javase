@@ -1,9 +1,10 @@
 package c08;
 
-import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Vector;
 
 public class C08_4 {
 
@@ -19,24 +20,11 @@ public class C08_4 {
         list.add("str3");
     }
 
-    //    @Test
+    @Test
     public void test2() {
         String[] array = {"str1", "str2", "str3"};
         List<String> list = Arrays.asList(array); /* Arrays.asList()转换的List只能查看不能增删改 */
         list.add("str4");
-    }
-
-    /* List去重 */
-    @Test
-    public void test3() {
-        Map<String, Object> map1 = ImmutableMap.<String, Object>builder().put("key", "value").build();
-        Map<String, Object> map2 = ImmutableMap.<String, Object>builder().put("key", "value").build();
-
-        List list = new ArrayList(Arrays.asList(map1, map2));
-        HashSet set = new HashSet(list);
-        list.clear();
-        list.addAll(set);
-        System.out.println(list);
     }
 
 }

@@ -3,6 +3,7 @@ package c15;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -77,8 +78,8 @@ public class C15_3 {
     public void test6() throws IOException {
         File file = new File("C:/Users/Administrator/Desktop/test.txt");
         File zipFile = new File("C:/Users/Administrator/Desktop/test.zip");
-        InputStream inputStream = new FileInputStream(file);
-        ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(zipFile));
+        InputStream inputStream = Files.newInputStream(file.toPath());
+        ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(zipFile.toPath()));
 //        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 //        ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream);
         zipOutputStream.putNextEntry(new ZipEntry(file.getName()));

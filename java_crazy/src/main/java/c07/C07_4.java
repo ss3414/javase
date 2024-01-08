@@ -102,18 +102,18 @@ public class C07_4 {
 //    @Test
     public void test10() {
         Calendar calendar = Calendar.getInstance();
-        System.out.println("年：" + calendar.get(Calendar.YEAR));
-        System.out.println("月：" + (calendar.get(Calendar.MONTH) + 1));
-        System.out.println("日：" + calendar.get(Calendar.DAY_OF_MONTH)); /* 当月的第几日 */
-        System.out.println("时：" + calendar.get(Calendar.HOUR_OF_DAY));
-        System.out.println("分：" + calendar.get(Calendar.MINUTE));
-        System.out.println("秒：" + calendar.get(Calendar.SECOND));
-        System.out.println("当前时间毫秒数：" + System.currentTimeMillis());
+        System.out.println("年:" + calendar.get(Calendar.YEAR));
+        System.out.println("月:" + (calendar.get(Calendar.MONTH) + 1));
+        System.out.println("日:" + calendar.get(Calendar.DAY_OF_MONTH)); /* 当月的第几日 */
+        System.out.println("时:" + calendar.get(Calendar.HOUR_OF_DAY));
+        System.out.println("分:" + calendar.get(Calendar.MINUTE));
+        System.out.println("秒:" + calendar.get(Calendar.SECOND));
+        System.out.println("当前时间毫秒数:" + System.currentTimeMillis());
 
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); /* varchar型时间 */
-        System.out.println("Date格式化前：" + date);
-        System.out.println("Date格式化后：" + format.format(date));
+        System.out.println("Date格式化前:" + date);
+        System.out.println("Date格式化后:" + format.format(date));
     }
 
     /* 时间戳 */

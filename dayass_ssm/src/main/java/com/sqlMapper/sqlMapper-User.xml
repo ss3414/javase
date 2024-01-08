@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="">
+    <!-- 不使用全限定名所有SQL id必须唯一 -->
+
+    <resultMap id="userResultMap" type="com.model.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, password
+    </sql>
+
+    <insert id="insert" parameterType="com.model.User">
+        INSERT INTO USER (id, name, password)
+        VALUES (#{id}, #{name}, #{password})
+    </insert>
+
+    <select id="selectById" parameterType="com.model.User" resultMap="userResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <!--
+    ①使用${}时，MyBatis不会将${param}替换为${_parameter}
+    ②动态代理版MyBatis在接口上加@Param注解即可
+    ③sqlSessionTemplate版目前只能手动替换
+    -->
+    <select id="selectByProperty" parameterType="java.lang.String" resultMap="userResultMap">
+        SELECT id,${_parameter}
+        FROM user
+        GROUP BY ${_parameter}
+    </select>
+
+</mapper>

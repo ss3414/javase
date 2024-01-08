@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <display-name>mvc</display-name>
+
+    <!--
+    ①web.xml中组件加载顺序与其在web.xml中的先后顺序无关
+    ②context-param>listener>filter>servlet
+    -->
+
+    <!-- 整个Web应用的初始化参数 -->
+    <context-param>
+        <param-name>context-name</param-name>
+        <param-value>context-value</param-value>
+    </context-param>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo Servlet -->
+
+    <servlet>
+        <servlet-name>ServletDemo1</servlet-name>
+        <servlet-class>com.servlet.ServletDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/servlet/ServletDemo1</url-pattern>
+    </servlet-mapping>
+
+    <!--************************************************************半分割线******************************-->
+
+    <servlet>
+        <servlet-name>ServletContextDemo1</servlet-name>
+        <servlet-class>com.servlet.ServletContextDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo1</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo2</servlet-name>
+        <servlet-class>com.servlet.ServletContextDemo2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo2</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <servlet-class>com.servlet.ServletContextDemo3</servlet-class>
+        <init-param>
+            <param-name>init-param</param-name>
+            <param-value>init-value</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo3</url-pattern>
+    </servlet-mapping>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo Response -->
+
+    <servlet>
+        <servlet-name>ResponseDemo1</servlet-name>
+        <servlet-class>com.response.ResponseDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseDemo1</servlet-name>
+        <url-pattern>/response/ResponseDemo1</url-pattern>
+    </servlet-mapping>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo Request -->
+
+    <servlet>
+        <servlet-name>RequestDemo1</servlet-name>
+        <servlet-class>com.request.RequestDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo1</servlet-name>
+        <url-pattern>/request/RequestDemo1</url-pattern>
+    </servlet-mapping>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo Cookie -->
+
+    <servlet>
+        <servlet-name>CookieDemo1</servlet-name>
+        <servlet-class>com.cookie.CookieDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieDemo1</servlet-name>
+        <url-pattern>/cookie/CookieDemo1</url-pattern>
+    </servlet-mapping>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo Session -->
+
+    <servlet>
+        <servlet-name>SessionDemo1</servlet-name>
+        <servlet-class>com.session.SessionDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDemo1</servlet-name>
+        <url-pattern>/session/SessionDemo1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SessionDemo2</servlet-name>
+        <servlet-class>com.session.SessionDemo2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDemo2</servlet-name>
+        <url-pattern>/session/SessionDemo2</url-pattern>
+    </servlet-mapping>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo Filter -->
+
+    <!-- FilterServlet1相当于Controller -->
+    <servlet>
+        <servlet-name>FilterServlet1</servlet-name>
+        <servlet-class>com.filter.FilterServlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilterServlet1</servlet-name>
+        <url-pattern>/filter/FilterServlet1</url-pattern>
+    </servlet-mapping>
+    <!-- 只拦截FilterServlet1 -->
+    <filter>
+        <filter-name>FilterDemo1</filter-name>
+        <filter-class>com.filter.FilterDemo1</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterDemo1</filter-name>
+        <url-pattern>/filter/FilterServlet1</url-pattern>
+    </filter-mapping>
+
+    <!--************************************************************半分割线******************************-->
+    <!-- todo Listener -->
+
+    <!-- 监听器不需要mapping（映射） -->
+    <listener>
+        <listener-class>com.listener.ListenerDemo1</listener-class>
+    </listener>
+
+    <!--************************************************************分割线************************************************************-->
+    <!-- todo 非Java EE学习：JavaBean/MVC -->
+
+</web-app>

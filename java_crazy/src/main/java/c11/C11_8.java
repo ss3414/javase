@@ -17,8 +17,8 @@ public class C11_8 {
     public void test() throws IOException {
         File file = new File("C:/Users/Administrator/Desktop/test.jpg");
         BufferedImage input = ImageIO.read(file);
-        Integer originWidth = input.getWidth();
-        Integer originHeight = input.getHeight();
+        int originWidth = input.getWidth();
+        int originHeight = input.getHeight();
         BufferedImage output = new BufferedImage(originWidth, originHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D = output.createGraphics();
         graphics2D.drawImage(input, 0, 0, originWidth, originHeight, null);

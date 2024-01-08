@@ -1,5 +1,4 @@
-# javase
-Java SE<br>
+# legacy
 
 ************************************************************************************************************************
 
@@ -21,7 +20,6 @@ C04_5（数组）<br>
 C05_1（类和对象）<br>
 C05_2（方法）<br>
 C05_3（变量）<br>
-C05_4（封装）<br>
 C05_6（继承）<br>
 C05_7（多态）<br>
 C05_8（组合）<br>
@@ -44,7 +42,6 @@ C07_3（常用：Object/Random）<br>
 C07_4（时间：JDK8/Calendar/Date/SimpleDateFormat）<br>
 C07_5（正则：Matcher/Pattern）<br>
 C07_8（未分类）<br>
-javax：JAXB<br>
 lang：String<br>
 math：BigDecimal/BigInteger<br>
 text：DecimalFormat<br>
@@ -86,8 +83,6 @@ C15_3（字节流和字符流：InputStream/Reader/OutputStream/Writer）<br>
 C15_8（对象序列化：Serializable）<br>
 
 ## c16（多线程）
-C16_3（线程池：Executor/Future/ThreadPoolExecutor）<br>
-C16_4（异步非阻塞：CompletableFuture）<br>
 C16_5（锁：ReadWriteLock/ReentrantLock/synchronized）<br>
 C16_7（原子/并发集合）<br>
 
@@ -102,7 +97,7 @@ C18_4（反射生成并操作对象）<br>
 C18_5（反射生成JDK动态代理）<br>
 C18_6（反射和泛型）<br>
 
-************************************************************************************************************************
+******************************************************************************************
 
 # java_advance
 SpringBoot+JPA<br>
@@ -143,103 +138,29 @@ JVM（Java虚拟机）<br>
 
 ************************************************************************************************************************
 
-# java_source（源码）
+# javaee5
+①Java EE5（JDK6）<br>
+②孤傲苍狼Java Web教程<br>
+Servlet<br>
+Response<br>
+Request<br>
+Cookie<br>
+Session<br>
+Filter<br>
+Listener<br>
+JavaBean<br>
+MVC<br>
 
-# lang
-## string
-String（数组）<br>
-StringBuffer（字节数组）<br>
-StringBuilder（字节数组）<br>
+# ssm
+①SSM（JDK6）<br>
+②SSM脚手架<br>
+③com包（功能）：分页/CURD/模板拆分<br>
+④mvc包（技术）：模板引擎/国际化/JSON转换/WebSocket+日志/XSS<br>
+XSS：web.xml配置Filter>Wrapper拦截参数>过滤<br>
 
-# collection（集合）
-## concurrent
-ConcurrentHashMap（HashMap）<br>
-
-## list
-ArrayList（数组）<br>
-LinkedList（双向链表）<br>
-Vector（数组）<br>
-
-## map
-EnumMap（数组）<br>
-HashMap（数组+链表/红黑树）<br>
-Hashtable（数组+链表）<br>
-IdentityHashMap（数组）<br>
-LinkedHashMap（HashMap）<br>
-TreeMap（红黑树）<br>
-WeakHashMap（数组+链表）<br>
-
-## queue
-ArrayDeque（数组）<br>
-PriorityQueue<br>
-
-## set
-EnumSet<br>
-HashSet（HashMap）<br>
-LinkedHashSet（LinkedHashMap）<br>
-TreeSet（TreeMap）<br>
-
-************************************************************************************************************************
-
-# java-agent
-Java代理<br>
-
-******************************************************************************************
-
-# java-util
-①Java编写的工具，Maven打包<br>
-②安装到Maven本地仓库<br>
-mvn clean install<br>
-
-## common（通用）
-Constant（常量）<br>
-File（文件）<br>
-
-## nosql（非关系型数据库）
-REST（ES）<br>
-
-## security（安全）
-JWT<br>
-Security<br>
-
-## sql（关系型数据库）
-JDBC<br>
-
-## test（自定义测试）
-Consume（耗时）<br>
-
-## untitled（未分类）
-Archive（归档）<br>
-Encode（字符串编码）<br>
-Image（图片）<br>
-
-******************************************************************************************
-
-# java_archive
-
-# library（第三方库）
-## untitled（未分类）
-agent（Java代理）<br>
-email（oh-my-email）<br>
-freemarker（模板引擎）<br>
-log4j（日志）<br>
-thumbnailator（图片）<br>
-tinypinyin（拼音）<br>
-
-## datasource（数据源）
-lucene（全文检索）<br>
-minio（对象存储）<br>
-
-## document（文档）
-easypoi（POI加强）<br>
-itext（PDF）<br>
-poi（操作Office文档）<br>
-
-## test（测试）
-junit4<br>
-junit5<br>
-
-## util（工具）
-guava（谷歌）<br>
-hutool（国产）<br>
-java-util（Java自定义）<br>
+# dayass_ssm
+①SSM（JDK6）<br>
+②专题库框架（SSM版）<br>
+JDK6+Spring3+原生MyBatis<br>
+原生MyBatis+传统写法（实现接口）+SQL XML位于java目录下<br>
+自定义拦截器+初始化Servlet<br>
