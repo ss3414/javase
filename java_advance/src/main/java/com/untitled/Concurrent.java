@@ -198,11 +198,4 @@ public class Concurrent {
     public void test9() {
     }
 
-    /*
-     * ReentrantLock/synchronized区别
-     * 两者都是可重入锁（重入：可以再次获取自己的内部锁）
-     * synchronized隐式/ReentrantLock显式（需要手动锁定/解锁）
-     * ReentrantLock高级特性：等待可中断/公平锁/选择性通知
-     * */
-
 }

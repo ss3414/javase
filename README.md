@@ -83,7 +83,6 @@ C15_3（字节流和字符流：InputStream/Reader/OutputStream/Writer）<br>
 C15_8（对象序列化：Serializable）<br>
 
 ## c16（多线程）
-C16_5（锁：ReadWriteLock/ReentrantLock/synchronized）<br>
 C16_7（原子/并发集合）<br>
 
 ## c17（网络编程）
