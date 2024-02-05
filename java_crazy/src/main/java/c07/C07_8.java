@@ -87,8 +87,4 @@ public class C07_8 {
         System.out.println(uuid);
     }
 
-//    public static void main(String[] args) {
-//        util2();
-//    }
-
 }

@@ -83,7 +83,6 @@ C15_3（字节流和字符流：InputStream/Reader/OutputStream/Writer）<br>
 C15_8（对象序列化：Serializable）<br>
 
 ## c16（多线程）
-C16_7（原子/并发集合）<br>
 
 ## c17（网络编程）
 C17_2（InetAddress/URLDecoder/URLEncoder）<br>
@@ -99,7 +98,6 @@ C18_6（反射和泛型）<br>
 ******************************************************************************************
 
 # java_advance
-SpringBoot+JPA<br>
 
 ## pattern（设计模式）
 ### c01（创建型）
@@ -156,10 +154,3 @@ MVC<br>
 ③com包（功能）：分页/CURD/模板拆分<br>
 ④mvc包（技术）：模板引擎/国际化/JSON转换/WebSocket+日志/XSS<br>
 XSS：web.xml配置Filter>Wrapper拦截参数>过滤<br>
-
-# dayass_ssm
-①SSM（JDK6）<br>
-②专题库框架（SSM版）<br>
-JDK6+Spring3+原生MyBatis<br>
-原生MyBatis+传统写法（实现接口）+SQL XML位于java目录下<br>
-自定义拦截器+初始化Servlet<br>
